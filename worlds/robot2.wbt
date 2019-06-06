@@ -30,6 +30,8 @@ Robot {
       device [
         RotationalMotor {
           name "Servo_motor"
+          maxVelocity 0.026
+          maxTorque 0.2157
         }
       ]
       endPoint Solid {
