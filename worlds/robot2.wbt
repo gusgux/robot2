@@ -30,7 +30,7 @@ Robot {
       device [
         RotationalMotor {
           name "Servo_motor"
-          maxVelocity 0.026
+          maxVelocity 13.1
           maxTorque 0.2157
         }
       ]
@@ -52,4 +52,5 @@ Robot {
       }
     }
   ]
+  controller "robot2"
 }
