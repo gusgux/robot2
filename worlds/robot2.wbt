@@ -3,7 +3,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation 0.0001516771994055633 -0.9994657503067881 -0.03268319075176844 6.095671961134225
-  position -0.25906849160326617 0.6222350178503956 2.8623034297473984
+  position -0.18123508069769192 0.6224860335049309 3.2727363158256737
 }
 TexturedBackground {
 }
@@ -12,7 +12,7 @@ TexturedBackgroundLight {
 Floor {
 }
 Robot {
-  translation -0.6525639506331808 0.15000000000000002 0.1876340471979474
+  translation 0 0.15000000000000002 0
   children [
     Shape {
       appearance PBRAppearance {
@@ -31,7 +31,7 @@ Robot {
         RotationalMotor {
           name "servo_motor"
           maxVelocity 13.1
-          maxTorque 0.2157
+          maxTorque 1000000
         }
       ]
       endPoint Solid {
@@ -45,73 +45,103 @@ Robot {
               size 0.1 0.1 0.1
             }
           }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 0.05 0
+            }
+            device [
+              RotationalMotor {
+                name "motor_frame_1"
+                maxTorque 100000
+              }
+            ]
+            endPoint Solid {
+              translation 0 0.27 0
+              rotation 0 0 1 0
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.9372549019607843 0.1607843137254902 0.1607843137254902
+                  }
+                  geometry DEF G_FRAME1 Capsule {
+                    height 0.3
+                    radius 0.05
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 0.2 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "motor_frame_2"
+                      maxTorque 100000
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 0.35 0
+                    rotation 0 0 1 0
+                    children [
+                      Shape {
+                        appearance PBRAppearance {
+                          baseColor 0.9372549019607843 0.1607843137254902 0.1607843137254902
+                        }
+                        geometry DEF G_FRAME2 Capsule {
+                          height 0.2
+                          radius 0.05
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          axis 0 0 1
+                          anchor 0 0.15 0
+                        }
+                        device [
+                          RotationalMotor {
+                            name "motor_frame_3"
+                            maxTorque 100000
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 0.275 0
+                          rotation 0 0 1 0
+                          children [
+                            Shape {
+                              appearance PBRAppearance {
+                                baseColor 0.9372549019607843 0.1607843137254902 0.1607843137254902
+                              }
+                              geometry DEF G_FRAME3 Capsule {
+                                height 0.15
+                                radius 0.05
+                              }
+                            }
+                          ]
+                          name "solid(3)"
+                          boundingObject USE G_FRAME3
+                          physics Physics {
+                          }
+                        }
+                      }
+                    ]
+                    name "solid(2)"
+                    boundingObject USE G_FRAME2
+                    physics Physics {
+                    }
+                  }
+                }
+              ]
+              name "solid(1)"
+              boundingObject USE G_FRAME1
+              physics Physics {
+              }
+            }
+          }
         ]
         boundingObject USE G_RED_BOX
         physics Physics {
         }
-      }
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 0 1
-        anchor 0 0.45 0
-      }
-      endPoint Solid {
-        translation 0 0.45 0
-        children [
-          Shape {
-            appearance PBRAppearance {
-              baseColor 0.9372549019607843 0.1607843137254902 0.1607843137254902
-            }
-            geometry Capsule {
-              height 0.3
-              radius 0.05
-            }
-          }
-        ]
-        name "solid(1)"
-      }
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 0 1
-        anchor 0 0.8 0
-      }
-      endPoint Solid {
-        translation 0 0.8 0
-        children [
-          Shape {
-            appearance PBRAppearance {
-              baseColor 0.9372549019607843 0.1607843137254902 0.1607843137254902
-            }
-            geometry Capsule {
-              height 0.2
-              radius 0.05
-            }
-          }
-        ]
-        name "solid(2)"
-      }
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 0 1
-        anchor 0 1.08 0
-      }
-      endPoint Solid {
-        translation 0 1.08 0
-        children [
-          Shape {
-            appearance PBRAppearance {
-              baseColor 0.9372549019607843 0.1607843137254902 0.1607843137254902
-            }
-            geometry Capsule {
-              height 0.15
-              radius 0.05
-            }
-          }
-        ]
-        name "solid(3)"
       }
     }
   ]
