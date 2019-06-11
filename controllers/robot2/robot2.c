@@ -56,7 +56,7 @@ int main(int argc, char **argv)
      * wb_differential_wheels_set_speed(100.0,100.0);
      */
 
-     wb_motor_set_position(hola,PI/4);
+    wb_motor_set_position(hola,PI/4);
   };
 
   /* Enter your cleanup code here */

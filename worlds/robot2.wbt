@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.033147159289316296 0.9952988774904269 0.0910022543530915 3.771008703450155
-  position -1.2532456712465248 0.5934371402973402 -1.6212666557161994
+  orientation 0.0001516771994055633 -0.9994657503067881 -0.03268319075176844 6.095671961134225
+  position -0.25906849160326617 0.6222350178503956 2.8623034297473984
 }
 TexturedBackground {
 }
@@ -12,7 +12,7 @@ TexturedBackgroundLight {
 Floor {
 }
 Robot {
-  translation 0 0.15 0
+  translation -0.6525639506331808 0.15000000000000002 0.1876340471979474
   children [
     Shape {
       appearance PBRAppearance {
@@ -29,13 +29,13 @@ Robot {
       }
       device [
         RotationalMotor {
-          name "Servo_motor"
+          name "servo_motor"
           maxVelocity 13.1
           maxTorque 0.2157
         }
       ]
       endPoint Solid {
-        translation 0 0.19998430401537895 0
+        translation 0 0.2 0
         children [
           Shape {
             appearance PBRAppearance {
@@ -49,6 +49,69 @@ Robot {
         boundingObject USE G_RED_BOX
         physics Physics {
         }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0 0.45 0
+      }
+      endPoint Solid {
+        translation 0 0.45 0
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.9372549019607843 0.1607843137254902 0.1607843137254902
+            }
+            geometry Capsule {
+              height 0.3
+              radius 0.05
+            }
+          }
+        ]
+        name "solid(1)"
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0 0.8 0
+      }
+      endPoint Solid {
+        translation 0 0.8 0
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.9372549019607843 0.1607843137254902 0.1607843137254902
+            }
+            geometry Capsule {
+              height 0.2
+              radius 0.05
+            }
+          }
+        ]
+        name "solid(2)"
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0 1.08 0
+      }
+      endPoint Solid {
+        translation 0 1.08 0
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.9372549019607843 0.1607843137254902 0.1607843137254902
+            }
+            geometry Capsule {
+              height 0.15
+              radius 0.05
+            }
+          }
+        ]
+        name "solid(3)"
       }
     }
   ]
